@@ -29,6 +29,15 @@
             </StackPanel>
         </StackPanel>
 
-
+        <Button Margin="0,0,8,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                Command="{Binding SaveCommand}"
+                Cursor="Hand"
+                Style="{StaticResource MaterialDesignIconButton}"
+                ToolTip="保存">
+            <materialDesign:PackIcon Kind="ContentSave" />
+        </Button>
     </Grid>
 </Page>

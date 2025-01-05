@@ -12,7 +12,9 @@ using Core.DB;
 using Core.Extensions.Interfaces;
 using Core.Models.DB;
 using Core.Services;
+using MaterialDesignThemes.Wpf;
 using UI.Models;
+using UI.Views;
 
 namespace UI.ViewModels;
 public partial class RulesVM : RulesM, ITransientService
@@ -35,8 +37,9 @@ public partial class RulesVM : RulesM, ITransientService
     {
         if (((RulesModel)dataGrid.SelectedItem).Id == 1)
         {
-            //todo 警告信息展示
-            MessageBox.Show("默认规则不允许删除", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageDialog messageDialog = new() { Message = { Text = "默认规则不允许删除！" } };
+            DialogHost.Show(messageDialog, "RootDialog");
+
             return;
         }
 
@@ -79,8 +82,9 @@ public partial class RulesVM : RulesM, ITransientService
             rulesService.AddAndUpdate(item);
         }
 
-        //todo 提示信息
-        MessageBox.Show("OK");
+        //提示信息
+        MessageDialog messageDialog = new() { Message = { Text ="成功！" } };
+        DialogHost.Show(messageDialog, "RootDialog");
 
         Refresh(dataGrid);
     }

@@ -10,23 +10,27 @@
         Width="650"
         Height="350"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM}"
+        d:DesignHeight="170"
+        d:DesignWidth="450"
         FontFamily="Microsoft YaHei"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
-    <Grid Margin="8">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <materialDesign:DialogHost DialogTheme="Inherit" Identifier="RootDialog">
+        <Grid Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0"
-                  DisplayMemberPath="Title"
-                  ItemsSource="{Binding PageList}"
-                  SelectedItem="{Binding SelectedPage}" />
+            <ListView Grid.Column="0"
+                      DisplayMemberPath="Title"
+                      ItemsSource="{Binding PageList}"
+                      SelectedItem="{Binding SelectedPage}" />
 
-        <Frame Grid.Column="1"
-               Content="{Binding SelectedPage}"
-               NavigationUIVisibility="Hidden" />
-    </Grid>
+            <Frame Grid.Column="1"
+                   Content="{Binding SelectedPage}"
+                   NavigationUIVisibility="Hidden" />
+        </Grid>
+    </materialDesign:DialogHost>
 </Window>

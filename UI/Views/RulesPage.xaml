@@ -68,9 +68,6 @@
                 <materialDesign:PackIcon Kind="Add" />
             </Button>
             <Button Margin="0,0,8,0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Panel.ZIndex="1"
                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                     Command="{Binding RefreshCommand}"
                     CommandParameter="{Binding ElementName=dataGrid}"
@@ -78,9 +75,7 @@
                     ToolTip="刷新">
                 <materialDesign:PackIcon Kind="Refresh" />
             </Button>
-            <Button HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Panel.ZIndex="1"
+            <Button Margin="0,0,8,0"
                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                     Command="{Binding SaveCommand}"
                     CommandParameter="{Binding ElementName=dataGrid}"
