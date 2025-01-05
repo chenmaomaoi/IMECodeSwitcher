@@ -1,0 +1,32 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:UI"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:UI.ViewModels"
+        Title="MainWindow"
+        Width="650"
+        Height="350"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM}"
+        FontFamily="Microsoft YaHei"
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d">
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0"
+                  DisplayMemberPath="Title"
+                  ItemsSource="{Binding PageList}"
+                  SelectedItem="{Binding SelectedPage}" />
+
+        <Frame Grid.Column="1"
+               Content="{Binding SelectedPage}"
+               NavigationUIVisibility="Hidden" />
+    </Grid>
+</Window>
