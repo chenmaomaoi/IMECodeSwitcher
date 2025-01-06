@@ -29,7 +29,7 @@ public partial class RulesVM : RulesM, ITransientService
 
         this.DeleteUnlockRules = this.configService.GetConfigs().DeleteUnlockRules;
 
-        Rules = rulesService.Finds().OrderBy(p => p.Id).ThenBy(p => p.Lock).ToList();
+        Rules = rulesService.Finds().OrderByDescending(p => p.Lock).ThenBy(p => p.Id).ToList();
     }
 
     [RelayCommand]
@@ -57,7 +57,7 @@ public partial class RulesVM : RulesM, ITransientService
     [RelayCommand]
     private void Refresh(DataGrid dataGrid)
     {
-        Rules = rulesService.Finds().OrderBy(p => p.Id).ThenBy(p => p.Lock).ToList();
+        Rules = rulesService.Finds().OrderByDescending(p => p.Lock).ThenBy(p => p.Id).ToList();
         Application.Current.Dispatcher.Invoke(dataGrid.Items.Refresh);
     }
 

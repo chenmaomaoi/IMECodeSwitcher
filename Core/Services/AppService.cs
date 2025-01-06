@@ -34,6 +34,12 @@ public class AppService : ISingletonService
 
         this.codeMonitorService.Start();
         this.programMonitorService.Start();
+
+        //删除没被锁定的规则
+        if (this.appConfigService.ConfigModel.DeleteUnlockRules)
+        {
+            this.rulesService.DeleteUnlockRules();
+        }
     }
 
     private void AppConfigService_OnConfigSaved(Models.AppConfigModel config)

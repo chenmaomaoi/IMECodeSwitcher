@@ -5,7 +5,7 @@ using Core.Models.DB;
 namespace Core.DB;
 
 [DbConfigurationType(typeof(SQLiteConfiguration))]
-public class BaseDBContext : DbContext, ITransientService
+public class BaseDBContext : DbContext, ISingletonService
 {
     public BaseDBContext() : base("DBConnectStr")
     {

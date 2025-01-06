@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -68,5 +69,15 @@ public class RulesService : ISingletonService
     {
         UnitWork.Delete(rulesModel);
         UnitWork.Save();
+    }
+
+    public void DeleteUnlockRules()
+    {
+        var deleteEntyties = UnitWork.Finds<RulesModel>(p => p.Lock == false && p.Id != 1).ToList();
+        if (deleteEntyties.Count > 0)
+        {
+            UnitWork.BulkDelete(deleteEntyties);
+            UnitWork.Save();
+        }
     }
 }

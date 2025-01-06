@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Threading;
 using Core.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace UI;
 
@@ -30,6 +33,11 @@ public partial class App : Application
         host = hostBuilder.ConfigureServices(services =>
         {
             services.RegisterAllServices();
+            services.AddSerilog();
+        }).UseSerilog((context, configuration) =>
+        {
+            configuration.MinimumLevel.Debug();
+            configuration.WriteTo.File("logs/app.log", rollingInterval: RollingInterval.Day);
         }).Build();
     }
 
@@ -61,8 +69,8 @@ public partial class App : Application
     /// <param name="e"></param>
     private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
-        //todo 记录日志
-        MessageBox.Show(e.Exception.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        Log.Fatal(e.Exception.ToString());
+        Log.CloseAndFlush();
     }
     #endregion
 }
