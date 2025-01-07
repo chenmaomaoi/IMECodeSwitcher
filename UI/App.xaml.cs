@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Threading;
 using Core.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Serilog;
 
 namespace UI;
